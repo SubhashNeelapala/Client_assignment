@@ -1,0 +1,99 @@
+<app-common></app-common>
+
+<div class="card cardborder-radius mt-2 mb-5 ">
+    <div class="card-header text-white bg-secondary panel-header p-1 ">
+        <div class="row align-items-center h-100">
+            <div class="col"><strong>Players </strong></div>
+            <div class="col">
+                <a type="button" style="float:right;" class="btn btn-sm btn-primary float-right btncolor"
+                    (click)="addPlayer()"><i class="fa fa-plus"></i> New Player</a>
+            </div>
+            <div> </div>
+        </div>
+    </div>
+
+    <div class="card-body cardbody">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="">
+                    <div class="table-responsive">
+                        <!-- <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+                            class="table tablepadding   table-bordered table-sm small" style="width:100%">
+                            <thead class="tablebg">
+
+                                <tr>
+                                    <th style='width:"5%"'>S.No</th>
+                                    <th style='width:"10%"'>Phase</th>
+                                    <th style='width:"15%"'>District</th>
+                                    <th style='width:"20%"'>Mandal</th>
+                                </tr>
+                            </thead>
+                            <tbody style="background: #fff !important">
+                                <tr *ngFor="let item of userslist;let i = index">
+                                    <td style='width:"5%"'>{{i+1}}</td>
+                                    <td style='width:"10%"'>{{item.name}}</td>
+                                    <td style='width:"15%"'>{{item.club_state | titlecase}}</td>
+                                    <td style='width:"20%"'>{{item.logo | titlecase}}</td>
+                                </tr>
+                            </tbody>
+                        </table> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="showPlayerModel" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Player Registration
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) ||
+                        (event.charCode >= 97 && event.charCode <= 122) || 
+                        (event.charCode == 32 || event.charCode == 46))' [(ngModel)]="first_name" name="Name">
+                    </div>
+                    <div class="col-12">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) ||
+                        (event.charCode >= 97 && event.charCode <= 122) || 
+                        (event.charCode == 32 || event.charCode == 46))' [(ngModel)]="last_name" name="Name">
+                    </div>
+                    <div class="col-12">
+                        <label>Player Jersey Number</label>
+                        <input type="text" class="form-control" onkeypress='return (event.charCode >= 48 && event.charCode <= 57)' [(ngModel)]="player_jersey_no" name="Name">
+                    </div>
+                    <div class="col-12">
+                        <label>Country</label>
+                        <input type="text" class="form-control" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) ||
+                        (event.charCode >= 97 && event.charCode <= 122) || 
+                        (event.charCode == 32 || event.charCode == 46))' [(ngModel)]="player_country" name="Country">
+                    </div>
+                    <div class="col-12">
+                        <label>Player Image</label>
+                        <input type="file" class="form-control" (change)="addFile($event)" [(ngModel)]="file" name="Player Image">
+                    </div>
+                    <div class="col-12">
+                        <label>Team</label>
+                        <select class="form-control" [(ngModel)]="team">
+                            <option value="">Team</option>
+                            <option *ngFor="let item of teamList" value="{{item.id}}">{{item.name}}</option>
+                        </select>
+                    </div>
+                    <br><br>
+                    <div class="col-12 pt-2">
+                        <button type="submit" class="btn btn-success btn-sm" (click)="savePlayerData()">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

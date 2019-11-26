@@ -1,0 +1,54 @@
+<app-common></app-common>
+
+<div class="card cardborder-radius mt-2 mb-5 ">
+
+    <div class="card-body cardbody">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="">
+                    <div class="row">
+                        <div class="col-6">
+                            <label>Team-A</label>
+                            <select class="form-control" [(ngModel)]="team_a">
+
+                                <option value="">Select</option>
+                                <option *ngFor="let item of team_list_a" value="{{item.id}}">{{item.name}}</option>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label>Team-B</label>
+                            <select class="form-control" [(ngModel)]="team_b">
+                                <option value="">Select</option>
+                                <option *ngFor="let item of team_list_b" value="{{item.id}}">{{item.name}}</option>
+                            </select>
+                        </div>
+                        <br><br>
+                        <div class="col-6 pt-2 wrapper">
+                            <button type="submit" class="btn btn-sm btn-success" (click)="createMatch()">Create Match</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive pt-3">
+                                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped tablepadding   table-bordered table-sm small" style="width:100%">
+                                            <thead class="tablebg">
+                                        
+                                              <tr>
+                                                <th style='width:"5%"'>S.No</th>
+                                                <th style='width:"10%"'>Team A</th>
+                                                <th style='width:"15%"'>Team B</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody style="background: #fff !important">
+                                              <tr *ngFor="let item of matches_list;let i = index">
+                                                <td style='width:"5%"'>{{i+1}}</td>
+                                                <td style='width:"10%"' >{{item.contestant1__name  | titlecase}}</td>
+                                                <td style='width:"15%"'>{{item.contestant2__name | titlecase}}</td>
+                                               
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

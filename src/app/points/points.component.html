@@ -1,0 +1,64 @@
+<app-common></app-common>
+
+<div class="card cardborder-radius mt-2 mb-5 ">
+
+    <div class="card-body cardbody">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-3">
+                        <label >Select Match</label>
+                        <select class="form-control" [(ngModel)]="match">
+                            <option value="">Select</option>
+                            <option *ngFor="let item of matches_list" value="{{item.id}}">{{item.contestant1__name +" vs "+item.contestant2__name}}</option>
+                        </select>
+                        
+                    </div>
+                    <div class="col-3">
+                            <label >contestant1 points</label>
+                            <input type="text" class="form-control" [(ngModel)]="team1" placeholder="points for  team 1" name="contestant1 points" onkeypress='return (event.charCode >= 48 && event.charCode <= 57)'>
+                            
+                    </div>
+                    <div class="col-3">
+                            <label >contestant2 points</label>
+                            <input type="text" class="form-control" [(ngModel)]="team2" placeholder="points for  team 2" name="contestant1 points" onkeypress='return (event.charCode >= 48 && event.charCode <= 57)'>
+                            
+                    </div>
+                    <div class="col-3">
+                            <label >contestant1 points</label>
+                            <select class="form-control" [(ngModel)]="team">
+                                <option value="">Select</option>
+                                <option value="{{item.id}}" *ngFor="let item of userslist">{{item.name}}</option>
+                            </select>
+                            
+                    </div>
+                    <div class="col-2 pt-2">
+                        <button type="submit" class="btn btn-sm btn-success" (click)="matchDataSave()">Save</button>
+                    </div>
+                    <div class="table-responsive pt-3">
+                                    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table tablepadding table-striped  table-bordered table-sm small" style="width:100%">
+                                            <thead class="tablebg">
+                                        
+                                              <tr>
+                                                <th style='width:"5%"'>S.No</th>
+                                                <th style='width:"10%"'>Team A Points</th>
+                                                <th style='width:"15%"'>Team B Points</th>
+                                                <th >Match Between</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody style="background: #fff !important">
+                                              <tr *ngFor="let item of winners_list;let i = index">
+                                                <td style='width:"5%"'>{{i+1}}</td>
+                                                <td style='width:"10%"' >{{item.contestant1_points  | titlecase}}</td>
+                                                <td style='width:"15%"'>{{item.contestant2_points | titlecase}}</td>
+                                                <td>{{item.match__contestant1__name +" vs "+item.match__contestant2__name | titlecase}}</td>
+                                               
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
